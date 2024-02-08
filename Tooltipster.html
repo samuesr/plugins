@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster.css" />
+    <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster-noir.css" />
+    <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster-light.css" />
+    <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster-punk.css" />
+    <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster-shadow.css" />
+   
+    <script type="text/javascript" src="./TOOLBAR/js/jquery-3.7.1.js"></script>
+    <script type="text/javascript" src="TOOLTIPSTER\tooltipster-master\jquery.tooltipster.js"></script>
+    <title>Document</title>
+    <style>
+       span img{filter: invert();}
+    </style>
+    <script>
+
+$(document).ready(function() {
+            $('.tooltip').tooltipster({
+                theme: 'tooltipster-punk',
+                content: $('<span><img src="TOOLTIPSTER/tooltipster-master/263100.png" width="30px" /> <strong>This text is in bold case !</strong></span>')
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <img src="TOOLTIPSTER/tooltipster-master/263100.png" class="tooltip" title="This is my image's tooltip message!" width="30px"/>
+    <a href="http://calebjacob.com" class="ketchup tooltip" title="This is my link's tooltip message!">Link</a>
+    <div class="tooltip" title="This is my div's tooltip message!"> 
+        This div has a tooltip when you hover over it!
+    </div>
+</body>
+</html>
