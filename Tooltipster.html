@@ -9,41 +9,280 @@
     <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster-light.css" />
     <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster-punk.css" />
     <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/tooltipster-shadow.css" />
+     <link rel="stylesheet" type="text/css" href="TOOLTIPSTER/tooltipster-master/css/style.css" /> 
+
+    <!-- El tipo de letra del titulo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
 
     <script type="text/javascript" src="./TOOLBAR/js/jquery-3.7.1.js"></script>
     <script type="text/javascript" src="TOOLTIPSTER/tooltipster-master/jquery.tooltipster.js"></script>
     <title>Document</title>
-    <style>
-        span img {
-            filter: invert();
-        }
-    </style>
+
+    <!-- PONER ESTO EN UN SCRIPT Y ORDENARLO EN LA MISMA FORMA QUE SALDRA VISUALEMNTE -->
     <script>
 
         $(document).ready(function () {
             $('.tooltip').tooltipster({
-                theme: 'tooltipster-punk',
-                content: $('<span><img src="TOOLTIPSTER/tooltipster-master/263100.png" width="30px" /> <strong>This text is in bold case !</strong> y esto no está en negrita</span>'),
+                theme: 'tooltipster-punk',  //clase css que se le aplica
+                content: $('<span><strong>Texto en negrita</strong> sobre fondo negro</span>'),
+                hideOnClick:true, // cuando hacemos click desaparece el tooltip                
+                trigger: 'hover'  // cuando se lanza el tooltip
+            });
+
+            $('.tooltip1').tooltipster({
+                theme: 'tooltipster-noir',  //clase css que se le aplica                
+                content: $('<span id="animacion">Texto de ayuda</span>'),
+                animation: 'fall',  // ani8macion cayendo
+                delay: 200,         // retrardo en aparecer
+                hideOnClick:true,   // cuando hacemos click desaparece el tooltip                
+                trigger: 'hover',   // cuando se lanza el tooltip
+                arrow:false         // tooltip sin flecha  - por defecto arrow es true
+            });
+
+            $('.tooltip2').tooltipster({
+                theme: 'tooltipster-shadow',
+                content: 'Texto de ayuda efecto swing',
+                animation: 'swing', // animacion balanceandose 
+                hideOnClick:true,
+                trigger: 'hover'
+                
+            });
+
+            $('.tooltip3').tooltipster({
+                theme: 'tooltipster-noir',
+                content: $('<span><img src="TOOLTIPSTER/tooltipster-master/img/js.png" width="30px" /> Imagen y texto</span>'),
                 animation: 'fade',
                 delay: 200,
-                //autoClose:false,
-                hideOnClick:true,
-                //theme: 'tooltipster-default',
-                touchDevices: false,
+                hideOnClick:true,                
+                offsetX : 30,   //Desplaza la información sobre herramientas (en píxeles) más hacia la izquierda/derecha del origen.
                 trigger: 'hover'
+                
             });
-        });
+
+            $('.tooltip4').tooltipster({
+                theme: 'tooltipster-shadow',
+                content: "Texto de ayuda definido en un tamaño concreto",                
+                maxWidth:70,        // ancho maximo
+                maxHeight:60,       // alto maximo
+                animation: 'grow',  // animacion creciendo
+                delay: 200,
+                hideOnClick:true,            
+                trigger: 'hover'                
+            });
+
+            //Tootltip con sombra
+            $('.tooltip5').tooltipster({
+                theme:'tooltipster-shadow',
+                content: 'Contenido de la ayuda',
+                animation: 'fade',
+                animationDuration: 500,
+                animationEasing: 'easeOutBack',                     
+                trigger:'hover'                
+            });
+
+            // varios bocadillos sobre un mismo objeto
+            $('#demo-multiple').tooltipster({
+                animation: 'swing',
+                content: 'Norte',
+                multiple: true,
+                position: 'top'
+            });
+            $('#demo-multiple').tooltipster({
+                content: 'Este',
+                multiple: true,
+                position: 'right',
+                theme: 'tooltipster-punk'
+            });	
+            $('#demo-multiple').tooltipster({
+                animation: 'grow',
+                content: 'Sur',
+                delay: 200,
+                multiple: true,
+                position: 'bottom',
+                theme: 'tooltipster-light'
+            });	
+            $('#demo-multiple').tooltipster({
+                animation: 'fall',
+                content: 'Este',
+                multiple: true,
+                position: 'left',
+                theme: 'tooltipster-shadow'
+            });	
+
+
+            // icono de ayuda
+            $('#demo-icon').tooltipster({
+                iconDesktop: true,
+                content:"Texto de ayuda"
+            });
+
+            // Tooltipo con contenido html, interracion
+            $('#demo-interact').tooltipster({
+                theme: 'tooltipster-shadow',
+                contentAsHTML: true, // el content se tomara como codigo html
+                content: "Enlace a <a href='http://google.com/' target='_blank'>google</a>"                
+            }); 
+
+            //Tooltip por click
+            $('#demo-events').tooltipster({
+                    theme:'tooltipster-shadow',
+                    content: 'Pulsa cualquier tecla para cerrar el tooltip',
+                    trigger: 'click'
+                });
+                $(window).keypress(function() {
+                    $('#demo-events').tooltipster('hide');
+                });
+
+        
+                
+
+            // TOOLTIPSTER grupacion    
+            $('.tooltipG').tooltipster();
+
+                // bind on start events (triggered on mouseenter)
+                $.tooltipster.on('start', function(event) {
+
+                    if ($(event.instance.elementOrigin()).hasClass('tooltip_group')) {
+
+                        var instances = $.tooltipster.instances('.tooltip_group'),
+                            open = false,
+                            duration;
+
+                        $.each(instances, function (i, instance) {
+
+                            if (instance !== event.instance) {
+
+                                // if another instance is already open
+                                if (instance.status().open){
+
+                                    open = true;
+
+                                    // get the current animationDuration
+                                    duration = instance.option('animationDuration');
+
+                                    // close the tooltip without animation
+                                    instance.option('animationDuration', 0);
+                                    instance.close();
+                                    
+                                    // restore the animationDuration to its normal value
+                                    instance.option('animationDuration', duration);
+                                }
+                            }
+                        });
+
+                        // if another instance was open
+                        if (open) {
+
+                            duration = event.instance.option('animationDuration');
+
+                            // open the tooltip without animation
+                            event.instance.option('animationDuration', 0);
+                            event.instance.open();
+                            
+                            // restore the animationDuration to its normal value
+                            event.instance.option('animationDuration', duration);
+
+                            // now that we have opened the tooltip, the hover trigger must be stopped
+                            event.stop();
+                        }
+                    }
+                });
+
+                
+
+
+        });// fin ready
 
     </script>
 </head>
 
 <body>
-    <img src="TOOLTIPSTER/tooltipster-master/263100.png" class="tooltip" title="This is my image's tooltip message!"
-        width="30px" />
-    <a href="http://calebjacob.com" class="ketchup tooltip" title="This is my link's tooltip message!">Link</a>
-    <div class="tooltip" title="This is my div's tooltip message!">
-        This div has a tooltip when you hover over it!
-    </div>
+
+
+    <img src="TOOLTIPSTER/tooltipster-master/img/Tooltipster-imagen_inv.png" alt="">
+
+    <h1>Tooltipster 4.0</h1>
+
+    <fieldset>
+        <legend><h3>Tooltip Simple</h3></legend>
+        <table>
+            
+            <tr>
+                <td>Tooltip sin estilo</td>
+                <td><span title="Mensaje sencillo">Hover</span></td>
+            </tr>
+            <tr>
+                <td>Tooltip sin estilo, en un elemento con estilo</td>
+                <td><p id='estilo1' title="Tooltip sin estilos">Hover</p></td>
+            </tr>
+        </table>
+
+    </fieldset>
+    
+
+    <table border="2">
+        <caption>Tooltip con estilos</caption>
+        <tr>
+            
+            <td>Tooltip sobre imagen</td>
+            <td><img src="TOOLTIPSTER/tooltipster-master/img/263100.png" class="tooltip"   width="30px" /></td>            
+        </tr>
+        <tr>
+            <td>Tooltip sobre enlace</td>
+            <td> <a href="" class="tooltip" >Enlace</a></td>
+        </tr>
+        <tr>
+            <td>Varios tooltip sobre un elemento</td>
+            <td> <img id="demo-multiple" src="TOOLTIPSTER/tooltipster-master/img/mapas-y-banderas.png" alt="mapas" width="20px" height="20px" > </td>
+        </tr>
+        <tr>
+            <td>Icono de ayuda</td>
+            <td><span id="demo-icon"></span></td>
+        </tr>
+        <tr>
+            <td>Tooltip sobre texto con animacion</td>
+            <td><p class="tooltip2">Hover</p></td>
+        </tr>
+        <tr>
+            <td>Tooltip interactivo</td>
+            <td><span id="demo-interact" >Hover</span> </td>
+        </tr>
+        <tr>
+            <td>Tooltip con una imagen</td>
+            <td><span class="tooltip3">Hover</span></td>
+        </tr>
+        <tr>
+            <td>Tooltip de un tamaño concreto</td>
+            <td><span class="tooltip4">Hover</span></td>
+        </tr>
+        <tr>
+            <td>Tooltip con sombra</td>
+            <td><span class="tooltip5">Hover</span></td>
+        </tr>
+        <tr>
+            <td>Tooltip que cae, sin flecha y con animación</td>
+            <td><p  class="tooltip1">Hover</p></td>
+        </tr>
+        <tr>
+            <td>Tooltip activado por click</td>
+            <td><p id="demo-events" >Click</p></td>
+        </tr>
+
+       
+       
+
+    </table>   
+    
+    <fieldset>
+        <legend>Tooltips Agrupados</legend>
+        <input type="button" value="❤" title="Añadir a favoritos" class="tooltipG tooltip_group" />
+        <input type="button" value="☂" title="Bailar bajo la lluvia" class="tooltipG tooltip_group" />
+        <input type="button" value="♞" title="Juega al Ajedrez" class="tooltipG tooltip_group" />
+        <input type="button" value="☯" title="Apaga el ordenador y meditata" class="tooltipG tooltip_group" />
+    </fieldset>
+
 </body>
 
 </html>
