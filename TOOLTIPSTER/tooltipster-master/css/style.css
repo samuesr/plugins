@@ -1,0 +1,158 @@
+/* Estilo General */
+body {
+    font-family:  "Baguet script";
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+fieldset{
+    border: 3px solid;
+    border-radius: 10px;
+    border-image: linear-gradient(to right, blue, purple)1 ;
+    width: 60%;      
+}
+
+legend h3{
+    color:blue;  
+}
+
+h1 {
+    font-family: "Style Script", cursive;
+    font-size: 5em;
+}
+
+body{
+    margin: 40px 40px;
+}
+td{ padding: 10px;  min-width: 100px;
+    height: 35px;
+    
+}
+table{ padding : 10px;
+    border-collapse: collapse;
+margin: 0 auto;}
+
+#demo-complex.complex {
+    -webkit-animation: pulse 4s infinite;
+    -moz-animation: pulse 4s infinite;
+    -o-animation: pulse 4s infinite;
+    animation: pulse 4s infinite;
+    position: fixed;
+}
+#demo-complex {
+    position: absolute;
+}
+
+p#estilo1{
+    font-size: 20px;
+    color:#008000;
+}
+
+span#animacion {
+    animation-duration: 4s;
+    animation-name: estiloAnimacion;
+}
+@keyframes estiloAnimacion {
+    from { margin-left: -50%;       }
+   /*  50% { margin-left: 5%;       } */
+    to { margin-left: 0%;   }
+}
+
+
+/*
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Cabecera */
+/*
+header {
+    background: #005a87;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #0779e4 3px solid;
+}
+
+
+
+/* Navegación */
+/*
+nav {
+    display: flex;
+    background: #03396c;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+nav a:hover {
+    background: #0779e4;
+}
+
+/* Contenido Principal */
+/*
+.content {
+    display: flex;
+    margin-top: 20px;
+}
+
+.content .main-content {
+    flex: 3;
+    padding: 20px;
+}
+
+.content .sidebar {
+    flex: 1;
+    padding: 20px;
+    background: #e4e4e4;
+}
+
+/* Pie de página */
+/*
+footer {
+    background: #005a87;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Estilos para tooltip */
+/*
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+*/

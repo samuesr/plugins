@@ -22,14 +22,15 @@
 }
 
 /* This next selector defines the color of the border on the outside of the arrow. This will automatically match the color and size of the border set on the main tooltip styles. Set display: none; if you would like a border around the tooltip but no border around the arrow */
-.tooltipster-default .tooltipster-arrow .tooltipster-arrow-border {
-	/* border-color: ... !important; */
-}
+/*.tooltipster-default .tooltipster-arrow .tooltipster-arrow-border {
+	/* border-color: ... !important; 
+}*/
 
 
 /* If you're using the icon option, use this next selector to style them */
 .tooltipster-icon {
-	cursor: help;
+	cursor: help; 
+	/* cursor :  crosshair; */
 	margin-left: 4px;
 }
 
@@ -173,6 +174,7 @@
 	-ms-transition-property: -ms-transform;
 	transition-property: transform;
 	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden
 }
 .tooltipster-grow-show {
 	-webkit-transform: scale(1,1);
@@ -230,8 +232,8 @@
 	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
 	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
 }
-.tooltipster-fall-show {
-}
+/* .tooltipster-fall-show {
+} */
 .tooltipster-fall.tooltipster-dying {
 	-webkit-transition-property: all;
 	-moz-transition-property: all;
@@ -256,8 +258,8 @@
 	-o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15); 
 	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.15);
 }
-.tooltipster-slide.tooltipster-slide-show {
-}
+/* .tooltipster-slide.tooltipster-slide-show {
+} */
 .tooltipster-slide.tooltipster-dying {
 	-webkit-transition-property: all;
 	-moz-transition-property: all;
