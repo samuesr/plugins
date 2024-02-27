@@ -15,9 +15,26 @@ event: 'hover',
 animation: 'bounce',
 adjustment:60});
 
-$('#boton2').on('toolbarShown',mostar);
+//eventos
+$('#boton2').on('toolbarShown',mostar); 
+$('#boton2').on('toolbarHidden',ocultar); 
+$('#boton2').on('toolbarItemClick',clicar); 
 
+
+$('#img-toolbar').toolbar({content: '#tolbar3',
+position: 'bottom',
+style: 'info-o',
+event: 'hover',
+animation: 'grow',
+adjustment:60})
 })
 function mostar(e) {
     console.log(e.target);
+    console.log ('se ha mostrado');
+}
+function ocultar(){
+    console.log ('ocultado');
+};
+function clicar() {
+    console.log ('se ha hecho click');
 }
